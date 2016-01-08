@@ -1,0 +1,4 @@
+find . -regex ".*\.\(o\|s\|out\|i\|ii\|d\|exe\)" -exec rm {} \;
+git add .
+git commit -m "commit"
+git push

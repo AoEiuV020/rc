@@ -1,0 +1,16 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\gvim]
+@="gvim"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\gvim\command]
+@="cmd /c \"start gvim \"%1\"\""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\vim]
+@="vim"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\*\shell\vim\command]
+@="cmd /c \"vim \"%1\"\""
+
+
+
