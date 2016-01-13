@@ -60,6 +60,13 @@ func SetTitle()
 			"#需要用\转义，\本身也要转义，
 		endif
 	endfor
+	for type in ["lua"]
+		if &filetype == type
+			let com="multi"
+			let start="--[["
+			let end="--]]"
+		endif
+	endfor
 	for type in ["sql","mysql"]
 		if &filetype == type
 			let com="single"
@@ -107,6 +114,11 @@ func SetTitle()
 	for type in ["sh"]
 		if &filetype == type
 			call append(0,"#!/bin/sh")
+		endif
+	endfor
+	for type in ["lua"]
+		if &filetype == type
+			call append(0,"#!/bin/lua")
 		endif
 	endfor
 	for type in ["python"]
