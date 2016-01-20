@@ -169,6 +169,15 @@ func Cpp()
 	call append(line("."), "\<TAB>return 0;")
 	execute "normal i\<TAB>\<ESC>"
 endfunc
+func Java()
+	call append(line(".")-1, "public class ".expand("%:t:r"))
+	call append(line(".")-1, "{")
+	call append(line(".")-1, "\tpublic static void main(String[] args)")
+	call append(line(".")-1, "\t{")
+	call append(line("."), "}")
+	call append(line("."), "\t}")
+	execute "normal i\<TAB>\<TAB>\<ESC>"
+endfunc
 func Html()
 	call append(line(".")-1, "<!doctype html>" )
 	call append(line(".")-1, "<head>" )
