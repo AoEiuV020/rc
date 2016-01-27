@@ -206,6 +206,7 @@ set backspace=2
 set whichwrap=b,s,h,l,<,>,~,[,]
 "使用鼠标，话说win下
 "set mouse=a
+set mouse=
 "选择模式的一些设置，
 set selection=exclusive
 set selectmode=mouse,key
