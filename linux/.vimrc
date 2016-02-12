@@ -183,6 +183,8 @@ func Html()
 	call append(line(".")-1, "<head>" )
 	call append(line(".")-1, "\<TAB><meta charset=\"utf-8\" />" )
 	call append(line(".")-1, "\<TAB><title>".expand("%:t")."</title>" )
+	call append(line(".")-1, "\<TAB><meta name=\"viewport\" content=\"user-scalable=no, width=device-width\" />" )
+	 
 	call append(line(".")-1, "</head>" )
 	call append(line(".")-1, "<html>" )
 	call append(line(".")-1, "\<TAB><body>" )
