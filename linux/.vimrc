@@ -42,11 +42,11 @@ func SetTitle()
 	for type in ["c","cpp","java"]
 		if &filetype == type
 			let com="multi"
-			let start="/**"
-			let end="*/"
+			let start="/* "
+			let end=" */"
 		endif
 	endfor
-	for type in ["html","xml","php"]
+	for type in ["html","php"]
 		if &filetype == type
 			let com="multi"
 			let start="<!--"
@@ -180,13 +180,12 @@ func Java()
 endfunc
 func Html()
 	call append(line(".")-1, "<!doctype html>" )
-	call append(line(".")-1, "<head>" )
-	call append(line(".")-1, "\<TAB><meta charset=\"utf-8\" />" )
-	call append(line(".")-1, "\<TAB><title>".expand("%:t")."</title>" )
-	call append(line(".")-1, "\<TAB><meta name=\"viewport\" content=\"user-scalable=no, width=device-width\" />" )
-	 
-	call append(line(".")-1, "</head>" )
 	call append(line(".")-1, "<html>" )
+	call append(line(".")-1, "\<TAB><head>" )
+	call append(line(".")-1, "\<TAB>\<TAB><title>".expand("%:t")."</title>" )
+	call append(line(".")-1, "\<TAB>\<TAB><meta charset=\"utf-8\" name=\"viewport\" content=\"user-scalable=no, width=device-width\" />" )
+	 
+	call append(line(".")-1, "\<TAB></head>" )
 	call append(line(".")-1, "\<TAB><body>" )
 	call append(line(".")-1, "\<TAB>\<TAB><p>" )
 	call append(line("."), "</html>" )
@@ -289,12 +288,12 @@ endf
 "fileencodings是打开文件时判断编码的顺序，utf-8不能在cp936的后面，vim会把utf-8都识别为cp936，
 "termencoding是显示的编码，win下可以用utf-8处理，然后gbk显示，
 if (g:iswindows)
-	set encoding=utf-8
-	set termencoding=cp936
+	"set encoding=cp936
+	"set termencoding=cp936
 	set fileencoding=cp936
 else
-	set encoding=utf-8
-	set termencoding=utf-8
+	"set encoding=utf-8
+	"set termencoding=utf-8
 	set fileencoding=utf-8
 endif
 "加了下面这段才if能读unicode，看不懂，
