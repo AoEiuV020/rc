@@ -209,7 +209,7 @@ set whichwrap=b,s,h,l,<,>,~,[,]
 "set mouse=a
 set mouse=
 "选择模式的一些设置，
-set selection=exclusive
+set selection=inclusive
 set selectmode=mouse,key
 "打开语法高亮，
 syntax on
