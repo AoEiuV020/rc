@@ -6,6 +6,16 @@ rem		^> Mail: 490674483@qq.com
 rem		^> Created Time: 2015/06/17 - 17:38:14
 rem	***************************************************
 set my=%~dp0
+set args=%2 %3 %4 %5 %6 %7 %8 %9
+set JAVA_HOME=D:\Development\Java\jdk1.8.0_40\
+set MinGW_HOME=D:\Development\MinGW%2
+set ANDROID_HOME=D:\Development\Android\android
+set SDK_HOME=D:\Development\Android\sdk
+set NDK_HOME=D:\Development\Android\ndk
+set ANT_HOME=D:\Development\Android\ant
+set MSYS_HOME=D:\Development\msys64
+set ADB_HOME=D:\Android\adb
+set PUTTY_HOME=D:\Development\SSH\putty
 rem if "%1"=="" (goto add) 
 goto %1
 goto end
@@ -16,15 +26,13 @@ goto end
 
 :java
 echo 		Working with java...
-set JAVA_HOME=D:\Development\Java\jdk1.8.0_40\
 set lib=%JAVA_HOME%\lib;%lib%
 set include=%JAVA_HOME%\include;%include%
 set path=%JAVA_HOME%\bin;%path%
 goto end
 
 :mingw
-echo 		Working with MinGW%2...
-set MinGW_HOME=D:\Development\MinGW%2
+echo 		Working with MinGW...
 set mf=D:\Development\Code\makefile
 set lib=%MinGW_HOME%\lib;%lib%
 set include=%MinGW_HOME%\include;%include%
@@ -37,7 +45,6 @@ call %0 mingw 64
 goto end
 
 :android
-set ANDROID_HOME=D:\Development\Android\android
 call %0 adb
 call %0 java
 call %0 ant
@@ -47,19 +54,16 @@ goto end
 
 :adb
 echo 		Android Debug Bridge...
-set ADB_HOME=D:\Android\adb
 set path=%ADB_HOME%;%path%
 goto end
 
 :ant
 echo 		Working with android ant...
-set ANT_HOME=D:\Development\Android\ant
 set path=%ANT_HOME%\bin;%path%
 goto end
 
 :sdk
 echo 		Working with android sdk...
-set SDK_HOME=D:\Development\Android\sdk
 set SDK_TOOLS=%SDK_HOME%\tools
 set SDK_BUILD_TOOLS=%SDK_HOME%\build-tools\19.1.0
 set path=%SDK_BUILD_TOOLS%;%SDK_TOOLS%;%path%
@@ -67,15 +71,19 @@ goto end
 
 :ndk
 echo 		Working with android ndk...
-set NDK_HOME=D:\Development\Android\ndk
 set path=%NDK_HOME%;%path%
+goto end
+
+:msys
+echo 		Working with msys...
+echo msys2_shell %args%
+call %MSYS_HOME%\msys2_shell %args%
 goto end
 
 :putty
 echo 		SSH with putty...
 echo 		putty -ssh aoeiuv020.top -l aoeiuv -pw aoeiuv
 echo		psftp aoeiuv@aoeiuv020.top -pw aoeiuv
-set PUTTY_HOME=D:\Development\SSH\putty
 set path=%PUTTY_HOME%;%path%
 goto end
 
@@ -106,4 +114,6 @@ regedit cmd.reg
 regedit gvim.reg
 goto end
 
+:exit
+exit
 :end
