@@ -39,7 +39,10 @@ filetype indent on
 "新文件自动设置开头的作者信息，
 autocmd BufNewFile * exe "call SetTitle()"
 func SetTitle()
-	for type in ["c","cpp","java"]
+	if &filetype == "java"
+		call InfoJavaDoc()
+	endif
+	for type in ["c","cpp"]
 		if &filetype == type
 			let com="multi"
 			let start="/* "
@@ -101,7 +104,7 @@ func SetTitle()
 		endif
 	endif
 	"下面是不同类型文件在加信息后要做的，比如把作者信息折叠起来，
-	for type in ["c","cpp","java"]
+	for type in ["c","cpp"]
 		if &filetype == type
 			normal zM
 		endif
@@ -129,6 +132,11 @@ func SetTitle()
 		endif
 	endfor
 	normal G
+	if &filetype == "java"
+		call append(line(".")-1, "public class ".expand("%:t:r")."{")
+		call append(line("."), "")
+		call append(line("."), "}")
+	endif
 endfunc
 func Info()
 	call append(line(".")-1, "***************************************************")
@@ -137,6 +145,13 @@ func Info()
 	call append(line(".")-1, "	^> Mail: 490674483@qq.com")
 	call append(line(".")-1, "	^> Created Time: ".strftime("%Y/%m/%d - %H:%M:%S"))
 	call append(line(".")-1, "***************************************************")
+endfunc
+func InfoJavaDoc()
+	call append(line(".")-1, "/**")
+	call append(line(".")-1, " * ")
+	call append(line(".")-1, " * @author AoEiuV020")
+	call append(line(".")-1, " * @version 1.0, ".strftime("%Y/%m/%d"))
+	call append(line(".")-1, " */")
 endfunc
 func Comment(start,com)
 	exe "".a:start.",".(line(".")-1)."s#^#".a:com
@@ -168,15 +183,11 @@ func Cpp()
 	call append(line("."), "}")
 	call append(line("."), "\<TAB>return 0;")
 	execute "normal i\<TAB>\<ESC>"
+	"ToDo 添加Tab可以不要，
 endfunc
 func Java()
-	call append(line(".")-1, "public class ".expand("%:t:r"))
-	call append(line(".")-1, "{")
-	call append(line(".")-1, "\tpublic static void main(String[] args)")
-	call append(line(".")-1, "\t{")
-	call append(line("."), "}")
+	call append(line(".")-1, "\tpublic static void main(String[] args){")
 	call append(line("."), "\t}")
-	execute "normal i\<TAB>\<TAB>\<ESC>"
 endfunc
 func Html()
 	call append(line(".")-1, "<!doctype html>" )
@@ -184,7 +195,7 @@ func Html()
 	call append(line(".")-1, "\<TAB><head>" )
 	call append(line(".")-1, "\<TAB>\<TAB><title>".expand("%:t")."</title>" )
 	call append(line(".")-1, "\<TAB>\<TAB><meta charset=\"utf-8\" name=\"viewport\" content=\"user-scalable=no, width=device-width\" />" )
-	 
+
 	call append(line(".")-1, "\<TAB></head>" )
 	call append(line(".")-1, "\<TAB><body>" )
 	call append(line(".")-1, "\<TAB>\<TAB><p>" )
@@ -298,13 +309,13 @@ else
 endif
 "加了下面这段才if能读unicode，看不懂，
 if has("multi_byte")
-  if &termencoding == ""
-    let &termencoding = &encoding
-  endif
-  set encoding=utf-8
-  setglobal fileencoding=utf-8
-  "setglobal bomb
-  set fileencodings=ucs-bom,utf-8,cp936,ucs-bom,shift-jis,gb18030,gb2312,latin1
+	if &termencoding == ""
+		let &termencoding = &encoding
+	endif
+	set encoding=utf-8
+	setglobal fileencoding=utf-8
+	"setglobal bomb
+	set fileencodings=ucs-bom,utf-8,cp936,ucs-bom,shift-jis,gb18030,gb2312,latin1
 endif
 "set fileencodings=utf-8,cp936,ucs-bom,shift-jis,gb18030,gb2312
 "设置换行符的类型，
