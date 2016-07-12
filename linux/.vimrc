@@ -147,10 +147,27 @@ func Info()
 	call append(line(".")-1, "***************************************************")
 endfunc
 func InfoJavaDoc()
+	call Package()
 	call append(line(".")-1, "/**")
 	call append(line(".")-1, " * @author AoEiuV020")
 	call append(line(".")-1, " * @version 1.0, ".strftime("%Y/%m/%d"))
 	call append(line(".")-1, " */")
+endfunc
+func Package()
+	let oldline=line(".")
+	let package=expand("%:p:h")
+	"exec "normal i"."package ".package.";"
+	call append(0, "package ".package.";")
+	if getline(1) =~# "src/"
+		exec "1s# .*src/# #g"
+	endif
+	if getline(1) =~# "java/"
+		exec "1s# .*java/# #g"
+	endif
+	if getline(1) =~# "/"
+		exec "1s#/#.#g"
+	endif
+	normal j
 endfunc
 func Comment(start,com)
 	exe "".a:start.",".(line(".")-1)."s#^#".a:com
