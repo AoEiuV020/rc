@@ -49,7 +49,7 @@ func SetTitle()
 			let end=" */"
 		endif
 	endfor
-	for type in ["html","php"]
+	for type in ["html"]
 		if &filetype == type
 			let com="multi"
 			let start="<!--"
