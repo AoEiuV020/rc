@@ -5,7 +5,7 @@
 #		^> Mail: 490674483@qq.com
 #		^> Created Time: 2016/01/31 - 23:07:20
 #	***************************************************
-dir=$(dirname %0)
+dir=$(dirname $0)
 cd ${dir}
 echo ${PWD}
 ln -sf ${PWD}/.vimrc ~/.vimrc
