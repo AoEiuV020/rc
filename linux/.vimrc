@@ -323,13 +323,13 @@ else
 	"set termencoding=utf-8
 	set fileencoding=utf-8
 endif
-"加了下面这段才if能读unicode，看不懂，
+"加了下面这段才if能读unicode，应该是只有termencoding和fileencodings都有用，
 if has("multi_byte")
 	if &termencoding == ""
 		let &termencoding = &encoding
 	endif
-	set encoding=utf-8
-	setglobal fileencoding=utf-8
+	"set encoding=utf-8
+	"setglobal fileencoding=utf-8
 	"setglobal bomb
 	set fileencodings=ucs-bom,utf-8,cp936,ucs-bom,shift-jis,gb18030,gb2312,latin1
 endif
