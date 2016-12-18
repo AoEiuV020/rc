@@ -398,3 +398,6 @@ endif
 if (!g:iswindows&&!g:isgui)
 	colorscheme slate
 endif
+"命令行自动补全时显示选项，
+set showcmd
+set wildmenu
