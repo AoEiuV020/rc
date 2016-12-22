@@ -7,15 +7,16 @@ rem		^> Created Time: 2015/06/17 - 17:38:14
 rem	***************************************************
 set my=%~dp0
 set args=%2 %3 %4 %5 %6 %7 %8 %9
-set JAVA_HOME=D:\Development\Java\jdk1.8.0_40\
-set MinGW_HOME=D:\Development\MinGW%2
-set ANDROID_HOME=D:\Development\Android\android
-set SDK_HOME=D:\Development\Android\sdk
+set JAVA_HOME=D:\aoeiuv020\development\jdk1.8.0_102
+set MinGW_HOME=D:\aoeiuv020\development\msys64
+:set ANDROID_HOME=D:\Development\Android\android
+set SDK_HOME=D:\aoeiuv020\development\sdk
 set NDK_HOME=D:\Development\Android\ndk
 set ANT_HOME=D:\Development\Android\ant
 set MSYS_HOME=D:\Development\msys64
-set ADB_HOME=D:\Android\adb
-set PUTTY_HOME=D:\Development\SSH\putty
+set ADB_HOME=%SDK_HOME%\platform-tools
+set PUTTY_HOME=D:\aoeiuv020\programe\putty
+set VIM_HOME=D:\aoeiuv020\programe\text\vim\vim80
 rem if "%1"=="" (goto add) 
 goto %1
 goto end
@@ -26,14 +27,14 @@ goto end
 
 :java
 echo 		Working with java...
-set lib=%JAVA_HOME%\lib;%lib%
-set include=%JAVA_HOME%\include;%include%
-set path=%JAVA_HOME%\bin;%path%
+set JAVA_HOME=%JAVA_HOME%\
+set lib=%JAVA_HOME%lib;%lib%
+set include=%JAVA_HOME%include;%include%
+set path=%JAVA_HOME%bin;%path%
 goto end
 
 :mingw
 echo 		Working with MinGW...
-set mf=D:\Development\Code\makefile
 set lib=%MinGW_HOME%\lib;%lib%
 set include=%MinGW_HOME%\include;%include%
 set path=%MinGW_HOME%\bin;%path%
@@ -102,16 +103,14 @@ goto end
 
 :addvim
 echo 		add vim...
-set VIM_HOME=D:\Program Files\tool\edit\Vim\vim74
-REG ADD "%env%" /v VIM_HOME /t REG_SZ /d "%VIM_HOME%" /f
-for /f "skip=1 tokens=2*" %%i in ('reg query  "%env%" /v path') do set temp=%%j
-REG ADD "%env%" /v path /t REG_EXPAND_SZ /d "%%VIM_HOME%%;%temp%" /f
+%VIM_HOME%/install.exe
 goto end
 
 :addreg
 echo 		add reg...
 regedit cmd.reg
 regedit gvim.reg
+regedit utc.reg
 goto end
 
 :exit
