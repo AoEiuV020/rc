@@ -13,7 +13,7 @@ set MinGW_HOME=D:\aoeiuv020\development\msys64
 set SDK_HOME=D:\aoeiuv020\development\sdk
 set NDK_HOME=D:\Development\Android\ndk
 set ANT_HOME=D:\Development\Android\ant
-set MSYS_HOME=D:\Development\msys64
+set MSYS_HOME=D:\aoeiuv020\development\msys64
 set ADB_HOME=%SDK_HOME%\platform-tools
 set PUTTY_HOME=D:\aoeiuv020\programe\putty
 set VIM_HOME=D:\aoeiuv020\programe\text\vim\vim80
@@ -77,9 +77,9 @@ goto end
 
 :msys
 echo 		Working with msys...
-echo msys2_shell %args%
-call %MSYS_HOME%\msys2_shell %args%
-goto end
+set path=%MSYS_HOME%;%path%
+msys2
+goto exit
 
 :putty
 echo 		SSH with putty...
