@@ -142,7 +142,7 @@ func Info()
 	call append(line(".")-1, "***************************************************")
 	call append(line(".")-1, "	^> File Name: ".expand("%:t"))
 	call append(line(".")-1, "	^> Author: AoEiuV020")
-	call append(line(".")-1, "	^> Mail: 490674483@qq.com")
+	call append(line(".")-1, "	^> Mail: aoeiuv020@qq.com")
 	call append(line(".")-1, "	^> Created Time: ".strftime("%Y/%m/%d - %H:%M:%S"))
 	call append(line(".")-1, "***************************************************")
 endfunc
