@@ -17,6 +17,8 @@ set MSYS_HOME=D:\aoeiuv020\development\msys64
 set ADB_HOME=%SDK_HOME%\platform-tools
 set PUTTY_HOME=D:\aoeiuv020\programe\putty
 set VIM_HOME=D:\aoeiuv020\programe\text\vim\vim80
+set ARIA_HOME=D:\aoeiuv020\programe\download\aria2
+set ARIA_DOWNLOAD=D:\aoeiuv020\download\aria2
 rem if "%1"=="" (goto add) 
 goto %1
 goto end
@@ -111,6 +113,12 @@ echo 		add reg...
 regedit cmd.reg
 regedit gvim.reg
 regedit utc.reg
+goto end
+
+:aria
+echo 		aria2c...
+set path=%ARIA_HOME%;%path%
+cd /d %ARIA_DOWNLOAD%
 goto end
 
 :exit
