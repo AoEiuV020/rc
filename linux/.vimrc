@@ -38,10 +38,14 @@ endif
 filetype indent on 
 "新文件自动设置开头的作者信息，
 autocmd BufNewFile * exe "call SetTitle()"
+"groovy自动缩进,
+autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
 func SetTitle()
-	if &filetype == "java"
-		call InfoJavaDoc()
-	endif
+	for type in ["java","groovy"]
+		if &filetype == type
+			call InfoJavaDoc()
+		endif
+	endfor
 	for type in ["c","cpp"]
 		if &filetype == type
 			let com="multi"
@@ -132,11 +136,13 @@ func SetTitle()
 		endif
 	endfor
 	normal G
-	if &filetype == "java"
-		call append(line(".")-1, "public class ".expand("%:t:r")."{")
-		call append(line("."), "")
-		call append(line("."), "}")
-	endif
+	for type in ["java","groovy"]
+		if &filetype == type
+			call append(line(".")-1, "public class ".expand("%:t:r")."{")
+			call append(line("."), "")
+			call append(line("."), "}")
+		endif
+	endfor
 endfunc
 func Info()
 	call append(line(".")-1, "***************************************************")
@@ -148,6 +154,8 @@ func Info()
 endfunc
 func InfoJavaDoc()
 	call Package()
+	call append(line(".")-1, "import java.util.*;")
+	call append(line(".")-1, "import java.io.*;")
 	call append(line(".")-1, "/**")
 	call append(line(".")-1, " * @author AoEiuV020")
 	call append(line(".")-1, " * @version 1.0, ".strftime("%Y/%m/%d"))
@@ -156,13 +164,12 @@ endfunc
 func Package()
 	let oldline=line(".")
 	let package=expand("%:p:h")
-	"exec "normal i"."package ".package.";"
 	call append(0, "package ".package.";")
 	if getline(1) =~# "src/"
 		exec "1s# .*src/# #g"
 	endif
-	if getline(1) =~# "java/"
-		exec "1s# .*java/# #g"
+	if getline(1) =~# &filetype."/"
+		exec "1s# .*".&filetype."/# #g"
 	endif
 	if getline(1) =~# "/"
 		exec "1s#/#.#g"
