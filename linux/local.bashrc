@@ -8,6 +8,7 @@ alias padon='synclient touchpadoff=0'
 apt='/var/cache/apt/archives'
 pkg='/var/cache/pacman/pkg'
 code='/mnt/ext/code'
+grub=/boot/efi/boot/grub
 git="$code/git"
 rc="$git/rc"
 export VISUAL="vim"
