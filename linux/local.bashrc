@@ -11,3 +11,4 @@ code='/mnt/ext/code'
 git="$code/git"
 rc="$git/rc"
 export VISUAL="vim"
+export EDITOR="vim"
