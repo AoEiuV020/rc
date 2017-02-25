@@ -41,8 +41,25 @@ autocmd BufNewFile * exe "call SetTitle()"
 "groovy自动缩进,
 autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
 func SetTitle()
-	for type in ["java","groovy"]
+	for type in ["java"]
 		if &filetype == type
+			call Package()
+			if getline(1) != ""
+				exec "1s/\\(.*\\)/package \\1;/"
+			endif
+			normal G
+			call append(line(".")-1, "import java.util.*;")
+			call append(line(".")-1, "import java.io.*;")
+			call InfoJavaDoc()
+		endif
+	endfor
+	for type in ["groovy"]
+		if &filetype == type
+			call Package()
+			if getline(1) != ""
+				exec "1s/\\(.*\\)/package \\1/"
+			endif
+			normal G
 			call InfoJavaDoc()
 		endif
 	endfor
@@ -136,9 +153,16 @@ func SetTitle()
 		endif
 	endfor
 	normal G
-	for type in ["java","groovy"]
+	for type in ["java"]
 		if &filetype == type
 			call append(line(".")-1, "public class ".expand("%:t:r")."{")
+			call append(line("."), "")
+			call append(line("."), "}")
+		endif
+	endfor
+	for type in ["groovy"]
+		if &filetype == type
+			call append(line(".")-1, "class ".expand("%:t:r")."{")
 			call append(line("."), "")
 			call append(line("."), "}")
 		endif
@@ -153,9 +177,6 @@ func Info()
 	call append(line(".")-1, "***************************************************")
 endfunc
 func InfoJavaDoc()
-	call Package()
-	call append(line(".")-1, "import java.util.*;")
-	call append(line(".")-1, "import java.io.*;")
 	call append(line(".")-1, "/**")
 	call append(line(".")-1, " * @author AoEiuV020")
 	call append(line(".")-1, " * @version 1.0, ".strftime("%Y/%m/%d"))
@@ -164,17 +185,22 @@ endfunc
 func Package()
 	let oldline=line(".")
 	let package=expand("%:p:h")
-	call append(0, "package ".package.";")
+	call append(0, package)
+	if getline(1) =~# "//"
+		exec "1s#//*#/#g"
+	endif
 	if getline(1) =~# "src/"
-		exec "1s# .*src/# #g"
+		exec "1s#.*src/##g"
 	endif
 	if getline(1) =~# &filetype."/"
-		exec "1s# .*".&filetype."/# #g"
+		exec "1s#.*".&filetype."/##g"
+	endif
+	if getline(1) =~# &filetype."$"
+		exec "1s#.*".&filetype."$##g"
 	endif
 	if getline(1) =~# "/"
 		exec "1s#/#.#g"
 	endif
-	normal j
 endfunc
 func Comment(start,com)
 	exe "".a:start.",".(line(".")-1)."s#^#".a:com
@@ -209,7 +235,11 @@ func Cpp()
 	"ToDo 添加Tab可以不要，
 endfunc
 func Java()
-	call append(line(".")-1, "\tpublic static void main(String[] args){")
+	call append(line(".")-1, "\tpublic static void main(String[] args)throws Exception{")
+	call append(line("."), "\t}")
+endfunc
+func Groovy()
+	call append(line(".")-1, "\tstatic void main(def args)throws Exception{")
 	call append(line("."), "\t}")
 endfunc
 func Html()
