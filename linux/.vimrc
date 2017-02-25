@@ -438,3 +438,7 @@ endif
 "命令行自动补全时显示选项，
 set showcmd
 set wildmenu
+"创建当前文件所在文件夹，自动创建上级目录，
+func Mkdir()
+	call mkdir(expand("%:p:h"),"p")
+endfun
