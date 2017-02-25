@@ -37,10 +37,10 @@ endif
 "检查文件类型，有这个才能针对不同文件做预处理，
 filetype indent on 
 "新文件自动设置开头的作者信息，
-autocmd BufNewFile * exe "call SetTitle()"
+autocmd BufNewFile * exe "call Template()"
 "groovy自动缩进,
 autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
-func SetTitle()
+func Template()
 	for type in ["java"]
 		if &filetype == type
 			call Package()
@@ -51,83 +51,22 @@ func SetTitle()
 			call append(line(".")-1, "import java.util.*;")
 			call append(line(".")-1, "import java.io.*;")
 			call InfoJavaDoc()
+			call append(line(".")-1, "public class ".expand("%:t:r")."{")
+			call append(line("."), "")
+			call append(line("."), "}")
 		endif
 	endfor
 	for type in ["groovy"]
-		if &filetype == type
+		if &filetype == type && expand("%:e") == type
 			call Package()
 			if getline(1) != ""
 				exec "1s/\\(.*\\)/package \\1/"
 			endif
 			normal G
 			call InfoJavaDoc()
-		endif
-	endfor
-	for type in ["c","cpp"]
-		if &filetype == type
-			let com="multi"
-			let start="/* "
-			let end=" */"
-		endif
-	endfor
-	for type in ["html"]
-		if &filetype == type
-			let com="multi"
-			let start="<!--"
-			let end="-->"
-		endif
-	endfor
-	for type in ["sh","python","dosini","make"]
-		if &filetype == type
-			let com="single"
-			let start="\\#"
-			"#需要用\转义，\本身也要转义，
-		endif
-	endfor
-	for type in ["lua"]
-		if &filetype == type
-			let com="multi"
-			let start="--[["
-			let end="--]]"
-		endif
-	endfor
-	for type in ["sql","mysql"]
-		if &filetype == type
-			let com="single"
-			let start="-- "
-		endif
-	endfor
-	for type in ["dosbatch"]
-		if &filetype == type
-			let com="single"
-			let start="rem"
-		endif
-	endfor
-	for type in ["vim"]
-		if &filetype == type
-			let com="single"
-			let start="\""
-		endif
-	endfor
-	"这里设置作者信息，并根据上面的分类，加上注释，
-	"分成单行注释和多行注释，
-	if exists("com")
-		call Info()
-		let curline=(line("."))
-		if com == "single"
-			call Comment(1,start."\<TAB>")
-		elseif com == "multi"
-			exe "1s#^#".start
-			normal G
-			exe "normal ".curline."G"
-			exe "".(line(".")-1)."s#$#".end
-			normal G
-		endif
-	endif
-	"下面是不同类型文件在加信息后要做的，比如把作者信息折叠起来，
-	for type in ["c","cpp"]
-		if &filetype == type
-			normal zM
+			call append(line(".")-1, "class ".expand("%:t:r")."{")
+			call append(line("."), "")
+			call append(line("."), "}")
 		endif
 	endfor
 	for type in ["dosbatch"]
@@ -150,21 +89,6 @@ func SetTitle()
 			call append(0,"# -*- coding: utf-8 -*-")
 			call append(0,"#!/bin/python")
 			set fenc=utf-8
-		endif
-	endfor
-	normal G
-	for type in ["java"]
-		if &filetype == type
-			call append(line(".")-1, "public class ".expand("%:t:r")."{")
-			call append(line("."), "")
-			call append(line("."), "}")
-		endif
-	endfor
-	for type in ["groovy"]
-		if &filetype == type
-			call append(line(".")-1, "class ".expand("%:t:r")."{")
-			call append(line("."), "")
-			call append(line("."), "}")
 		endif
 	endfor
 endfunc
