@@ -1,0 +1,14 @@
+JAVA_HOME=D:\aoeiuv020\development\jdk
+MinGW_HOME=D:\aoeiuv020\development\msys64
+ANDROID_HOME=D:\aoeiuv020\development\android
+SDK_HOME=D:\aoeiuv020\development\sdk
+NDK_HOME=D:\Development\Android\ndk
+ANT_HOME=D:\Development\Android\ant
+MSYS_HOME=D:\aoeiuv020\development\msys64
+ADB_HOME=%SDK_HOME%\platform-tools
+PUTTY_HOME=D:\aoeiuv020\programe\putty
+VIM_HOME=D:\aoeiuv020\programe\text\vim\vim80
+ARIA_HOME=D:\aoeiuv020\programe\download\aria2
+ARIA_DOWNLOAD=D:\aoeiuv020\download\aria2
+VSTOOLS_HOME="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools"
+GRADLE_HOME=D:\aoeiuv020\development\gradle
