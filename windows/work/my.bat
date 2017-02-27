@@ -7,7 +7,7 @@ rem		^> Created Time: 2015/06/17 - 17:38:14
 rem	***************************************************
 set my=%~dp0
 set args=%2 %3 %4 %5 %6 %7 %8 %9
-set JAVA_HOME=D:\aoeiuv020\development\jdk1.8.0_102
+set JAVA_HOME=D:\aoeiuv020\development\jdk
 set MinGW_HOME=D:\aoeiuv020\development\msys64
 :set ANDROID_HOME=D:\Development\Android\android
 set SDK_HOME=D:\aoeiuv020\development\sdk
@@ -20,6 +20,7 @@ set VIM_HOME=D:\aoeiuv020\programe\text\vim\vim80
 set ARIA_HOME=D:\aoeiuv020\programe\download\aria2
 set ARIA_DOWNLOAD=D:\aoeiuv020\download\aria2
 set VSTOOLS_HOME="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools"
+set GRADLE_HOME=D:\aoeiuv020\development\gradle
 rem if "%1"=="" (goto add) 
 goto %1
 goto end
@@ -34,6 +35,7 @@ set JAVA_HOME=%JAVA_HOME%\
 set lib=%JAVA_HOME%lib;%lib%
 set include=%JAVA_HOME%include;%include%
 set path=%JAVA_HOME%bin;%path%
+call %0 gradle
 goto end
 
 :mingw
@@ -125,6 +127,12 @@ goto end
 :cs
 echo		c# csharp,
 call %VSTOOLS_HOME%\VsDevCmd.bat
+goto end
+
+:gradle
+echo 		gradle,
+set lib=%GRADLE_HOME%\lib;%lib%
+set path=%GRADLE_HOME%\bin;%path%
 goto end
 
 :exit
