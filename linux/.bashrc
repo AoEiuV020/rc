@@ -13,4 +13,4 @@ devps()
 	PS1='\[\e[1m\]\[\e[31m\][\[\e[33m\]\W\[\e[31m\]]\[\e[32m\]\#\[\e[36m\]\$\[\e[m\]'
 }
 set -o vi
-
+shopt -s direxpand
