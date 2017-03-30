@@ -17,3 +17,5 @@ rc="$git/rc"
 export VISUAL="vim"
 export EDITOR="vim"
 export GRADLE_OPTS='-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=1080'
+export PROXYCHAINS_CONF_FILE=${PROXYCHAINS_CONF_FILE}
+export PROXYCHAINS_QUIET_MODE=${PROXYCHAINS_QUIET_MODE:-1}
