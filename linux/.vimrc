@@ -102,8 +102,9 @@ func Info()
 endfunc
 func InfoJavaDoc()
 	call append(line(".")-1, "/**")
-	call append(line(".")-1, " * @author AoEiuV020")
-	call append(line(".")-1, " * @version 1.0 , ".strftime("%Y/%m/%d"))
+	call append(line(".")-1, " * Created by AoEiuV020 on ".strftime("%Y/%m/%d").".")
+"	call append(line(".")-1, " * @author AoEiuV020")
+"	call append(line(".")-1, " * @version 1.0 , ".strftime("%Y/%m/%d"))
 	call append(line(".")-1, " */")
 endfunc
 func Package()
