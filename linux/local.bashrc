@@ -16,3 +16,4 @@ git="$code/git"
 rc="$git/rc"
 export VISUAL="vim"
 export EDITOR="vim"
+export GRADLE_OPTS='-DsocksProxyHost=127.0.0.1 -DsocksProxyPort=1080'
