@@ -209,8 +209,8 @@ set tabstop=4
 set softtabstop=4
 "好像是自动缩进的长度，
 set shiftwidth=4
-"不用空格代替tab，据说用是因为有的公司要求不用tab，
-set noexpandtab
+"用空格代替tab，我转4空格党了，
+set expandtab
 "高亮搜索，
 set hlsearch
 "逐步搜索，一个一个字母输入同时搜索，
