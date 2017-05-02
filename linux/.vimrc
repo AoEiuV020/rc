@@ -40,6 +40,7 @@ filetype indent on
 autocmd BufNewFile * exe "call Template()"
 "groovy自动缩进,
 autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
+autocmd BufNewFile,BufRead *.kt exe "set filetype=kotlin"
 func Template()
 	for type in ["java"]
 		if &filetype == type
@@ -51,7 +52,7 @@ func Template()
 			call append(line(".")-1, "import java.util.*;")
 			call append(line(".")-1, "import java.io.*;")
 			call InfoJavaDoc()
-			call append(line(".")-1, "public class ".expand("%:t:r")."{")
+			call append(line(".")-1, "public class ".expand("%:t:r")." {")
 			call append(line("."), "")
 			call append(line("."), "}")
 		endif
@@ -64,7 +65,20 @@ func Template()
 			endif
 			normal G
 			call InfoJavaDoc()
-			call append(line(".")-1, "class ".expand("%:t:r")."{")
+			call append(line(".")-1, "class ".expand("%:t:r")." {")
+			call append(line("."), "")
+			call append(line("."), "}")
+		endif
+	endfor
+	for type in ["kotlin"]
+		if &filetype == type && expand("%:e") == "kt"
+			call Package()
+			if getline(1) != ""
+				exec "1s/\\(.*\\)/package \\1/"
+			endif
+			normal G
+			call InfoJavaDoc()
+			call append(line(".")-1, "class ".expand("%:t:r")." {")
 			call append(line("."), "")
 			call append(line("."), "}")
 		endif
