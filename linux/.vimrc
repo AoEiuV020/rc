@@ -49,8 +49,10 @@ func Template()
 				exec "1s/\\(.*\\)/package \\1;/"
 			endif
 			normal G
+			call append(line(".")-1, "")
 			call append(line(".")-1, "import java.util.*;")
 			call append(line(".")-1, "import java.io.*;")
+			call append(line(".")-1, "")
 			call InfoJavaDoc()
 			call append(line(".")-1, "public class ".expand("%:t:r")." {")
 			call append(line("."), "")
