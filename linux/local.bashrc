@@ -24,3 +24,23 @@ sast() {
 sast_out() {
     export PROXYCHAINS_CONF_FILE=/mnt/ext/tools/proxychains/sast_out.conf
 }
+gtest() {
+    GRADLE="gradle"
+    GRADLEW="./gradlew"
+    if [ -x $GRADLEW ]
+    then
+        GRADLE=$GRADLEW
+    fi
+    $GRADLE test --tests *$1* $2 $3 $4
+}
+gcommit() {
+    gradle clean test &&
+    git add . &&
+    git commit -F commit
+}
+gpush() {
+    git gc &&
+    git gc --prune=now &&
+    git gc --aggressive --prune=now &&
+    git push $1 $2 $3 $4
+}
