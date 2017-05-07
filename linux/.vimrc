@@ -66,6 +66,7 @@ func Template()
 				exec "1s/\\(.*\\)/package \\1/"
 			endif
 			normal G
+			call append(line(".")-1, "")
 			call InfoJavaDoc()
 			call append(line(".")-1, "class ".expand("%:t:r")." {")
 			call append(line("."), "")
@@ -79,6 +80,7 @@ func Template()
 				exec "1s/\\(.*\\)/package \\1/"
 			endif
 			normal G
+			call append(line(".")-1, "")
 			call InfoJavaDoc()
 			call append(line(".")-1, "class ".expand("%:t:r")." {")
 			call append(line("."), "")
