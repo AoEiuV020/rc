@@ -24,17 +24,21 @@ sast() {
 sast_out() {
     export PROXYCHAINS_CONF_FILE=/mnt/ext/tools/proxychains/sast_out.conf
 }
-gtest() {
+fgradle() {
     GRADLE="gradle"
     GRADLEW="./gradlew"
     if [ -x $GRADLEW ]
     then
         GRADLE=$GRADLEW
     fi
+}
+gtest() {
+    fgradle
     $GRADLE test --tests "*$1*" $2 $3 $4
 }
 gcommit() {
-    gradle clean test &&
+    fgradle
+    $GRADLE clean test &&
     git add . &&
     git commit -F commit
 }
