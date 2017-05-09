@@ -31,7 +31,7 @@ gtest() {
     then
         GRADLE=$GRADLEW
     fi
-    $GRADLE test --tests *$1* $2 $3 $4
+    $GRADLE test --tests "*$1*" $2 $3 $4
 }
 gcommit() {
     gradle clean test &&
