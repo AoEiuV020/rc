@@ -178,11 +178,11 @@ func Cpp()
 	"ToDo 添加Tab可以不要，
 endfunc
 func Java()
-	call append(line(".")-1, "    public static void main(String[] args)throws Exception{")
+	call append(line(".")-1, "    public static void main(String[] args) throws Exception {")
 	call append(line("."), "    }")
 endfunc
 func Groovy()
-	call append(line(".")-1, "    static void main(def args)throws Exception{")
+	call append(line(".")-1, "    static void main(def args) throws Exception {")
 	call append(line("."), "    }")
 endfunc
 func Html()
