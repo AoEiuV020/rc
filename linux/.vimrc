@@ -105,7 +105,7 @@ func Template()
 	for type in ["python"]
 		if &filetype == type
 			call append(0,"# -*- coding: utf-8 -*-")
-			call append(0,"#!/bin/python")
+			call append(0,"#!/usr/bin/env python3")
 			set fenc=utf-8
 		endif
 	endfor
