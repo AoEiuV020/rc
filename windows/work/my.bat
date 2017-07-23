@@ -14,6 +14,7 @@ mkdir "%local%"
 xcopy /e %my%\local_example %local%
 notepad %local%\properties.txt
 )
+rem setlocal enabledelayedexpansion
 for /f "eol=/ delims=" %%i in (%local%\properties.txt) do set %%i
 rem if "%1"=="" (goto add) 
 goto %1
