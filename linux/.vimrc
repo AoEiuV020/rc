@@ -36,11 +36,11 @@ else
 endif
 "检查文件类型，有这个才能针对不同文件做预处理，
 filetype indent on 
-"新文件自动设置开头的作者信息，
-autocmd BufNewFile * exe "call Template()"
 "groovy自动缩进,
 autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
 autocmd BufNewFile,BufRead *.kt exe "set filetype=kotlin"
+"新文件自动设置开头的作者信息，
+autocmd BufNewFile * exe "call Template()"
 func Template()
 	for type in ["java"]
 		if &filetype == type
