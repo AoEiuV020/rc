@@ -24,6 +24,10 @@ goto end
 vim %~f0
 goto end
 
+:properties
+vim %local%\properties.txt
+goto end
+
 :java
 echo 		Working with java,
 set JAVA_HOME=%JAVA_HOME%\
@@ -75,17 +79,43 @@ echo 		Working with android ndk,
 set path=%NDK_HOME%;%path%
 goto end
 
+:jadx
+echo 		Working with jadx,
+set path=%JADX_HOME%\bin;%path%
+goto end
+
+:apktool
+echo 		Working with apktool,
+call %0 java
+set path=%APKTOOL_HOME%;%path%
+goto end
+
 :msys
 echo 		Working with msys,
 set path=%MSYS_HOME%;%path%
 msys2
 goto exit
 
+:shell
+echo 		Working with shell,
+set path=%SHELL_HOME%\usr\bin;%path%
+goto end
+
 :putty
 echo 		SSH with putty,
 echo 		putty -ssh aoeiuv020.top -l aoeiuv -pw aoeiuv
 echo		psftp aoeiuv@aoeiuv020.top -pw aoeiuv
 set path=%PUTTY_HOME%;%path%
+goto end
+
+:jd
+call %0 putty
+start /b jd
+goto end
+
+:linux
+call %0 putty
+start /b linux
 goto end
 
 :add
