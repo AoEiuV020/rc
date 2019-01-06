@@ -28,6 +28,10 @@ goto end
 vim %local%\properties.txt
 goto end
 
+:save
+xcopy /ey %local% %my%\local_example
+goto end
+
 :java
 echo 		Working with java,
 set JAVA_HOME=%JAVA_HOME%\
@@ -94,6 +98,12 @@ goto end
 echo 		Working with msys,
 set path=%MSYS_HOME%;%path%
 msys2
+goto exit
+
+:cmder
+echo 		Working with cmder,
+set path=%CMDER_HOME%\;%path%
+cmder
 goto exit
 
 :shell

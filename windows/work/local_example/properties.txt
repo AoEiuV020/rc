@@ -1,5 +1,6 @@
-JAVA_HOME=D:\aoeiuv020\development\Java\jdk1.8.0_181
+JAVA_HOME=D:\aoeiuv020\development\jdk
 MinGW_HOME=D:\aoeiuv020\development\msys64
+CMDER_HOME=D:\aoeiuv020\development\cmder
 MSYS_HOME=D:\aoeiuv020\development\msys64
 ANDROID_HOME=D:\aoeiuv020\development\Android\SDK
 SDK_HOME=D:\aoeiuv020\development\Android\SDK
@@ -13,3 +14,4 @@ ARIA_DOWNLOAD=D:\aoeiuv020\download\aria2
 VSTOOLS_HOME="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools"
 GRADLE_HOME=D:\aoeiuv020\development\gradle
 GRADLE_USER_HOME=D:\aoeiuv020\development\.gradle
+SHELL_HOME=D:\aoeiuv020\development\PentestBox\base\PortableGit
