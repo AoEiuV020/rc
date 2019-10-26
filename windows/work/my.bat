@@ -118,9 +118,9 @@ echo		psftp aoeiuv@aoeiuv020.top -pw aoeiuv
 set path=%PUTTY_HOME%;%path%
 goto end
 
-:jd
+:main
 call %0 putty
-start /b jd
+putty -load main
 goto end
 
 :linux
