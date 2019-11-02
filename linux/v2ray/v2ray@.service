@@ -1,0 +1,12 @@
+[Unit]
+Description=v2ray Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/%i.json
+
+[Install]
+WantedBy=multi-user.target
+
