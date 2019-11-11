@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+profile="/etc/polipo"
+ln -sf $pwd/config $profile/
