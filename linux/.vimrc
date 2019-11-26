@@ -38,7 +38,6 @@ endif
 filetype indent on 
 "groovy自动缩进,
 autocmd BufNewFile,BufRead *.groovy exe "set smartindent"
-autocmd BufNewFile,BufRead *.kt exe "set filetype=kotlin"
 "新文件自动设置开头的作者信息，
 autocmd BufNewFile * exe "call Template()"
 func Template()
