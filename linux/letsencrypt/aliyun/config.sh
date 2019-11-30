@@ -12,4 +12,3 @@ aliyun configure set \
   --region cn-hangzhou \
   --access-key-id $ALIYUN_KEY \
   --access-key-secret $ALIYUN_SECRET 
-cd $oldpwd

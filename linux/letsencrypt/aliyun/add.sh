@@ -1,8 +1,6 @@
 #!/bin/bash
 set -e
 oldpwd=$PWD
-tmpdir=$(mktemp -u)
-mkdir -p $tmpdir
 cd $(dirname $0)
 domain=$1
 value=$2
@@ -32,5 +30,3 @@ done
 echo aliyun alidns AddDomainRecord --DomainName $domain --RR _acme-challenge --Type TXT --Value $value $dryrun
 aliyun alidns AddDomainRecord --DomainName $domain --RR _acme-challenge --Type TXT --Value $value $dryrun
 
-cd $oldpwd
-rm -rf $tmpdir

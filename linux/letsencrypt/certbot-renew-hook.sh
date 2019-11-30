@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 oldpwd=$PWD
-tmpdir=$(mktemp -u)
-mkdir $tmpdir
 cd $(dirname $0)
 domain=$CERTBOT_DOMAIN
 value=$CERTBOT_VALIDATION
@@ -32,5 +30,3 @@ fi
 echo $PWD/$dnsServer/add.sh $domain $value $keyScript
 $PWD/$dnsServer/add.sh $domain $value $keyScript
 
-cd $oldpwd
-rm -rf $tmpdir

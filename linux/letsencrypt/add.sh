@@ -5,8 +5,6 @@
 # namecheap: namecheap
 set -e
 oldpwd=$PWD
-tmpdir=$(mktemp -u)
-mkdir $tmpdir
 cd $(dirname $0)
 domain=$1
 value=$2
@@ -32,5 +30,3 @@ fi
 jq ".+{\"$domain\":\"$value\"}" $domainFile > $domainFile.bak
 mv -f $domainFile.bak $domainFile
 
-cd $oldpwd
-rm -rf $tmpdir
