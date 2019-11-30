@@ -29,6 +29,13 @@ if test ! -d "$dnsServer"; then
 fi
 echo $PWD/$dnsServer/apply.sh $domain $value
 $PWD/$dnsServer/apply.sh $domain $value
+# 事后删除记录，
+cat > /etc/letsencrypt/renewal-hooks/deploy/reseTxtRecord.sh <<EOF
+#!/bin/bash
+set -e
+$PWD/reset.sh
+EOF
+chmod +x /etc/letsencrypt/renewal-hooks/deploy/reseTxtRecord.sh
 # 等生效，添加记录很快生效的，
 echo sleep 10
 sleep 10
