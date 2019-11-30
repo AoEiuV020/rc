@@ -29,3 +29,5 @@ if test ! -d "$dnsServer"; then
 fi
 echo $PWD/$dnsServer/apply.sh $domain $value
 $PWD/$dnsServer/apply.sh $domain $value
+# 等生效，添加记录很快生效的，
+sleep 10
