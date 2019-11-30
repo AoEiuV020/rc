@@ -1,5 +1,9 @@
 #!/bin/sh
 set -e
+if test ! -w /usr/local/bin/; then
+    echo "require write permission of /usr/local/bin"
+    exit 1
+fi
 oldpwd=$PWD
 tmpdir=$(mktemp -u)
 mkdir $tmpdir
