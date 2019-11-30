@@ -1,0 +1,3 @@
+#!/bin/sh
+ALIYUN_KEY=*
+ALIYUN_SECRET=*
