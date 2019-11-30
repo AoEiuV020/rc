@@ -8,9 +8,9 @@ if test -z "$domain"; then
     echo domain empty
     exit 1
 fi
-if test -z "$domain"; then
-    echo domain empty
-    exit 1
+if test -z "$subDomain"; then
+    echo subDomain empty
+    exit 2
 fi
 export keyScript=${keyScript:-$PWD/../key.sh}
 . $keyScript
