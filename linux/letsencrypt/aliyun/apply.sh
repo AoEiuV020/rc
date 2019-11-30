@@ -22,4 +22,4 @@ echo aliyun alidns AddDomainRecord --DomainName $domain --RR $subDomain --Type T
 aliyun alidns AddDomainRecord --DomainName $domain --RR $subDomain --Type TXT --Value $value $dryrun
 
 # 事后删除记录，
-sleep 60 && ./reset.sh $@ &
+sleep 3600 && ./reset.sh $@ &

@@ -21,4 +21,4 @@ echo ./add.sh $domain $value
 ./add.sh $domain $value
 
 # 事后删除记录，
-sleep 60 && ./reset.sh $@ &
+sleep 3600 && ./reset.sh $@ &
