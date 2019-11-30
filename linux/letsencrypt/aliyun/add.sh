@@ -8,6 +8,15 @@ domain=$1
 value=$2
 #dryrun='--dryrun'
 
+if test -z "$domain"; then
+    echo domain empty
+    exit 1
+fi
+if test -z "$value"; then
+    echo value empty
+    exit 2
+fi
+
 subDomain=_acme-challenge.$domain
 # 先删除之前设置的记录，
 idList=($(aliyun alidns DescribeSubDomainRecords --SubDomain $subDomain \
