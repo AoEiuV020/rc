@@ -20,5 +20,3 @@ subDomain=_acme-challenge
 echo ./add.sh $domain $value
 ./add.sh $domain $value
 
-# 事后删除记录，
-sleep 3600 && ./reset.sh $@ &

@@ -29,5 +29,10 @@ if test ! -d "$dnsServer"; then
 fi
 echo $PWD/$dnsServer/apply.sh $domain $value
 $PWD/$dnsServer/apply.sh $domain $value
+# 事后删除记录，
+# 搞孤儿进程，否则certbot会等子进制结束才继续，
+echo bash -c "{ nohup sleep 600 >/dev/null 2>&1 ;$PWD/$dnsServer/reset.sh $domain $value & } &"
+bash -c "{ nohup sleep 600 >/dev/null 2>&1 ;$PWD/$dnsServer/reset.sh $domain $value & } &"
 # 等生效，添加记录很快生效的，
+echo sleep 10
 sleep 10

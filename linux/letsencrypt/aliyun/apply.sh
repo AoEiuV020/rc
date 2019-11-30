@@ -21,5 +21,3 @@ subDomain=_acme-challenge
 echo aliyun alidns AddDomainRecord --DomainName $domain --RR $subDomain --Type TXT --Value $value $dryrun
 aliyun alidns AddDomainRecord --DomainName $domain --RR $subDomain --Type TXT --Value $value $dryrun
 
-# 事后删除记录，
-sleep 3600 && ./reset.sh $@ &
