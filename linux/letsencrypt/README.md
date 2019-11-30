@@ -10,6 +10,11 @@ sudo apt install -y jq
 ./add.sh aoeiuv020.com aliyun
 ```
 
+文件夹中的install.sh用于安装该服务商必须的工具，
+```
+./aliyun/install.sh
+```
+
 key.sh保存dns服务商的accessToken相关，
 ```
 cp -i key-example.sh key.sh
