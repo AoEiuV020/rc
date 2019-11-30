@@ -11,4 +11,4 @@ aliyun configure set \
   --mode AK \
   --region cn-hangzhou \
   --access-key-id $ALIYUN_KEY \
-  --access-key-secret $ALIYUN_SECRET 
+  --access-key-secret $ALIYUN_SECRET
