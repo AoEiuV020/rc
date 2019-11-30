@@ -16,13 +16,9 @@ if test -z "$value"; then
 fi
 
 subDomain=_acme-challenge
-# 删除之前设置的记录，
-idList=($(
-  ./query.sh $domain $subDomain |
-    jq -r '.data.records|.[].id'
-))
-for id in ${idList[*]}; do
-  echo ./delete.sh $domain $id
-  ./delete.sh $domain $id
-done
+# 添加记录，
+echo ./add.sh $domain $value
+./add.sh $domain $value
 
+# 事后删除记录，
+sleep 60 && ./reset.sh $@ &

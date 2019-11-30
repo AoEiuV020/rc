@@ -15,10 +15,10 @@ if test -z "$value"; then
   exit 2
 fi
 
-subDomain=_acme-challenge.$domain
-# 先删除之前设置的记录，
+subDomain=_acme-challenge
+# 删除之前设置的记录，
 idList=($(
-  aliyun alidns DescribeSubDomainRecords --SubDomain $subDomain |
+  aliyun alidns DescribeSubDomainRecords --SubDomain $subDomain.$domain |
     jq .DomainRecords.Record |
     jq -r '.[].RecordId'
 ))
@@ -26,7 +26,3 @@ for id in ${idList[*]}; do
   echo aliyun alidns DeleteDomainRecord --RecordId $id $dryrun
   aliyun alidns DeleteDomainRecord --RecordId $id $dryrun
 done
-
-# 添加记录，
-echo aliyun alidns AddDomainRecord --DomainName $domain --RR _acme-challenge --Type TXT --Value $value $dryrun
-aliyun alidns AddDomainRecord --DomainName $domain --RR _acme-challenge --Type TXT --Value $value $dryrun
