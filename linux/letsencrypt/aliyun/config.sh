@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 oldpwd=$PWD
 cd $(dirname $0)
-keyScript=${1:-../key.sh}
+export keyScript=${keyScript:-$PWD/../key.sh}
 . $keyScript
 echo key=$ALIYUN_KEY
 echo secret=$ALIYUN_SECRET

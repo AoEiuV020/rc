@@ -12,7 +12,7 @@ if test -z "$domain"; then
     echo domain empty
     exit 1
 fi
-keyScript=${3:-$PWD/../key.sh}
+export keyScript=${keyScript:-$PWD/../key.sh}
 . $keyScript
 
 tmpdir=$(mktemp -u)

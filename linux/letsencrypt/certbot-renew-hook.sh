@@ -4,7 +4,7 @@ oldpwd=$PWD
 cd $(dirname $0)
 domain=$CERTBOT_DOMAIN
 value=$CERTBOT_VALIDATION
-keyScript=${1:-$PWD/key.sh}
+export keyScript=${1:-$PWD/key.sh}
 if test -z "$domain"; then
     echo domain empty
     exit 1
@@ -27,6 +27,6 @@ if test ! -d "$dnsServer"; then
     echo "$domain => $dnsServer not support"
     exit 5
 fi
-echo $PWD/$dnsServer/add.sh $domain $value $keyScript
-$PWD/$dnsServer/add.sh $domain $value $keyScript
+echo $PWD/$dnsServer/add.sh $domain $value
+$PWD/$dnsServer/add.sh $domain $value
 
