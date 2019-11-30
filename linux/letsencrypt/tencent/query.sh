@@ -3,11 +3,16 @@ set -e
 oldpwd=$PWD
 cd $(dirname $0)
 domain=$1
+subDomain=$2
 if test -z "$domain"; then
     echo domain empty
     exit 1
 fi
-keyScript=${2:-$PWD/../key.sh}
+if test -z "$domain"; then
+    echo domain empty
+    exit 1
+fi
+keyScript=${3:-$PWD/../key.sh}
 . $keyScript
 
 tmpdir=$(mktemp -u)
@@ -26,7 +31,7 @@ valueStr=$(echo {} \
     |jq ".+{offset:\"0\"}" \
     |jq ".+{length:\"20\"}" \
     |jq ".+{domain:\"$domain\"}" \
-    |jq ".+{subDomain:\"_acme-challenge\"}" \
+    |jq ".+{subDomain:\"$subDomain\"}" \
     |jq -S . \
     |jq -r 'to_entries|map("\(.key)=\(.value)")|join("&")')
 apiDomain="cns.api.qcloud.com"
