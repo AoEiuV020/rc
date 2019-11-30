@@ -14,7 +14,8 @@ fi
 
 # 删除记录，
 domainList=($(jq -r 'keys|.[]' domain.json))
-for domain in $domainList; do
+for domain in ${domainList[*]}; do
     dnsServer=$(jq -r ".\"$domain\"" domain.json)
+    echo $PWD/$dnsServer/reset.sh $domain
     $PWD/$dnsServer/reset.sh $domain
 done
