@@ -27,5 +27,5 @@ if test ! -d "$dnsServer"; then
   echo "$domain => $dnsServer not support"
   exit 5
 fi
-echo $PWD/$dnsServer/add.sh $domain $value
-$PWD/$dnsServer/add.sh $domain $value
+echo $PWD/$dnsServer/reset.sh $domain $value
+$PWD/$dnsServer/reset.sh $domain $value
