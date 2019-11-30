@@ -20,6 +20,11 @@ if test -z "$value"; then
     exit 2
 fi
 
+if test ! -d "$value"; then
+    echo $value not support
+    exit 3
+fi
+
 domainFile=domain.json
 if test ! -e $domainFile; then
     echo '{}' > $domainFile
