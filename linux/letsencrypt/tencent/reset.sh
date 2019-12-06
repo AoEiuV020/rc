@@ -17,7 +17,7 @@ idList=($(
     jq -r '.data.records|.[].id'
 ))
 for id in ${idList[*]}; do
-  echo ./delete.sh $domain $id
+  echo ./delete.sh $domain $id >&2
   ./delete.sh $domain $id
 done
 

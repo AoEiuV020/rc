@@ -17,6 +17,6 @@ fi
 
 subDomain=_acme-challenge
 # 添加记录，
-echo ./add.sh $domain $value
+echo ./add.sh $domain $value >&2
 ./add.sh $domain $value
 
