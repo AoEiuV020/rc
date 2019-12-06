@@ -2,7 +2,7 @@
 # 添加域名对应dns的服务商，
 # 阿里云: aliyun
 # 腾讯云: tencent
-# namecheap: namecheap
+# cloudflare: cloudflare
 set -e
 oldpwd=$PWD
 cd $(dirname $0)
