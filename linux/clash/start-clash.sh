@@ -14,6 +14,7 @@ url=$(cat subscribe)
 if [ "x$url" == "x" ]
 then
     echo no subscribe...
+    . proxy.sh
     $start
     exit
 else
@@ -23,16 +24,22 @@ curl --noproxy "*" -L -o $BAK $url
 if [ "$?" != 0 ]
 then
     echo download failed...
+    . proxy.sh
     $start
     exit
 fi
+. proxy.sh
 sed -is '/^\S*port:/d' $BAK
 sed -is '/^allow-lan:/d' $BAK
-sed -is '1i\
-mixed-port: 1081\
-port: 1082\
-socks-port: 11181\
-allow-lan: false' $BAK
+ex $BAK <<EOF
+1 i
+mixed-port: ${socks_proxy_port}
+port: ${http_proxy_port}
+socks-port: 11181
+allow-lan: false
+.
+wq
+EOF
 diff $DEFAULT $BAK
 if [ "$?" != 0 ]
 then
