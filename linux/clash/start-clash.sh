@@ -14,12 +14,13 @@ url=$(cat subscribe)
 if [ "x$url" == "x" ]
 then
     echo no subscribe...
-    $BIN
+    $start
     exit
 else
     echo updating...
 fi
 curl --noproxy "*" -L -o $BAK $url
+
 diff $DEFAULT $BAK
 if [ "$?" != 0 ]
 then
