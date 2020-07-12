@@ -6,7 +6,7 @@ After=network.target
 Type=simple
 User=root
 ExecStart=/etc/clash/start-clash.sh
-#ExecStop=/etc/clash/stop-clash.sh
+ExecStop=/etc/clash/stop-clash.sh
 
 
 [Install]

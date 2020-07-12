@@ -1,6 +1,20 @@
 #!/bin/bash
-# read pid file
+echo stop clash...
+if [ $"x$USER" != "xroot" ]
+then
+    echo need root...
+    exit 1
+fi
 cd /etc/clash
-PID=`cat clash.pid`
-kill -9 ${PID}
-rm clash.pid
+export user=${user:=aoeiuv}
+unset ALL_PROXY
+unset FTP_PROXY
+unset HTTPS_PROXY
+unset HTTP_PROXY
+unset NO_PROXY
+unset all_proxy
+unset ftp_proxy
+unset http_proxy
+unset https_proxy
+unset no_proxy
+which dconf && sudo -u $user ./system-noproxy.sh

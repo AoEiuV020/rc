@@ -1,4 +1,5 @@
 #!/bin/bash
+echo start clash...
 if [ $"x$USER" != "xroot" ]
 then
     echo need root...
@@ -32,8 +33,7 @@ start() {
     echo start...
     proxy
     which dconf && sudo -u $user ./system-proxy.sh
-    echo end system proxy...
-    su -m nobody -c "$BIN -d $profile"
+    sudo -u nobody $BIN -d $profile
 }
 
 cd /etc/clash
