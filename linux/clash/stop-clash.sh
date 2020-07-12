@@ -17,4 +17,4 @@ unset ftp_proxy
 unset http_proxy
 unset https_proxy
 unset no_proxy
-which dconf && sudo -u $user ./system-noproxy.sh
+which dconf && su $user -c ./system-noproxy.sh
