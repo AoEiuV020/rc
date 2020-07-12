@@ -1,6 +1,7 @@
 [Unit]
 Description=clash Client Service
-After=network.target
+Wants=network-online.target
+After=network-online.target
 
 [Service]
 Type=simple
@@ -10,5 +11,4 @@ ExecStop=/etc/clash/stop-clash.sh
 
 
 [Install]
-WantedBy=multi-user.target
-
+WantedBy=network-online.target
