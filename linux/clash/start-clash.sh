@@ -20,7 +20,19 @@ else
     echo updating...
 fi
 curl --noproxy "*" -L -o $BAK $url
-
+if [ "$?" != 0 ]
+then
+    echo download failed...
+    $start
+    exit
+fi
+sed -is '/^\S*port:/d' $BAK
+sed -is '/^allow-lan:/d' $BAK
+sed -is '1i\
+mixed-port: 1081\
+port: 1082\
+socks-port: 11181\
+allow-lan: false' $BAK
 diff $DEFAULT $BAK
 if [ "$?" != 0 ]
 then
