@@ -8,4 +8,6 @@ mkdir -p $profile
 system="/lib/systemd/system"
 cp *.sh $profile
 cp subscribe $profile
+cp clash $profile
+cp Country.mmdb $profile
 cp -f *.service $system/
