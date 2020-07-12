@@ -1,0 +1,14 @@
+[Unit]
+Description=clash Client Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/etc/clash/start-clash.sh
+#ExecStop=/etc/clash/stop-clash.sh
+
+
+[Install]
+WantedBy=multi-user.target
+

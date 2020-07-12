@@ -1,0 +1,11 @@
+#!/bin/bash
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+profile="/etc/clash"
+mkdir -p $profile
+system="/lib/systemd/system"
+cp *.sh $profile
+cp subscribe $profile
+cp -f *.service $system/
