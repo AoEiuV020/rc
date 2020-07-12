@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=/etc/clash/system-proxy.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=system-proxy
+Comment[en_US]=system-proxy
+X-GNOME-Autostart-Delay=0

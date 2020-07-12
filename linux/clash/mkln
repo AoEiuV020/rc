@@ -6,8 +6,11 @@ pwd=$PWD
 profile="/etc/clash"
 mkdir -p $profile
 system="/lib/systemd/system"
+autostart="$HOME/.config/autostart"
+mkdir -p autostart
 cp *.sh $profile
 cp subscribe $profile
 cp clash $profile
 cp Country.mmdb $profile
 cp -f *.service $system/
+cp -f *.desktop $autostart
