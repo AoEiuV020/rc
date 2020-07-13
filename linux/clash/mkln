@@ -4,13 +4,14 @@ pwd=$(dirname $0)
 cd $pwd
 pwd=$PWD
 profile="/etc/clash"
-mkdir -p $profile
+sudo mkdir -p $profile
 system="/lib/systemd/system"
+user="/usr/lib/systemd/user"
 autostart="$HOME/.config/autostart"
-mkdir -p autostart
-cp *.sh $profile
-cp subscribe $profile
-cp clash $profile
-cp Country.mmdb $profile
-cp -f *.service $system/
+mkdir -p $autostart
+sudo cp *.sh $profile
+sudo cp -f clash.service $system/
+sudo cp -f clash-user.service $user/
 cp -f *.desktop $autostart
+systemctl --user daemon-reload
+sudo systemctl daemon-reload

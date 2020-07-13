@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Exec=systemctl --user start clash-user
+X-GNOME-Autostart-enabled=true
+NoDisplay=false
+Hidden=false
+Name[en_US]=clash
+Comment[en_US]=clash
+X-GNOME-Autostart-Delay=0

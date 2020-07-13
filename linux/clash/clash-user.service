@@ -4,8 +4,9 @@ After=network-online.target
 
 [Service]
 Type=simple
-User=nobody
-ExecStart=/usr/bin/clash -d /etc/clash
+ExecStart=/usr/bin/clash
+ExecStartPost=/etc/clash/system-proxy.sh
+ExecStop=/etc/clash/system-noproxy.sh
 
 
 [Install]
