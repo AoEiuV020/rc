@@ -37,8 +37,8 @@ then
     echo download failed...
     exit
 fi
-sed -is '/^\S*port:/d' $BAK
-sed -is '/^allow-lan:/d' $BAK
+sed -i '/^\S*port:/d' $BAK
+sed -i '/^allow-lan:/d' $BAK
 ex $BAK <<EOF
 1 i
 mixed-port: ${socks_proxy_port}

@@ -13,5 +13,5 @@ sudo cp *.sh $profile
 sudo cp -f clash.service $system/
 sudo cp -f clash-user.service $user/
 cp -f *.desktop $autostart
-systemctl --user daemon-reload
+systemctl --user daemon-reload || true
 sudo systemctl daemon-reload
