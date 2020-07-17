@@ -39,12 +39,16 @@ then
 fi
 sed -i '/^\S*port:/d' $BAK
 sed -i '/^allow-lan:/d' $BAK
+sed -i '/^external-controller:/d' $BAK
+sed -i '/^secret:/d' $BAK
 ex $BAK <<EOF
 1 i
 mixed-port: ${socks_proxy_port}
 port: ${http_proxy_port}
 socks-port: 11181
 allow-lan: false
+external-controller: ':9090'
+secret: 'aoeiuv'
 .
 wq
 EOF
