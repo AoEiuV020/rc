@@ -27,8 +27,14 @@ then
 fi
 if [ "x$url" == "x" ]
 then
+    read -p "input subscribe url: " url
+fi
+if [ "x$url" == "x" ]
+then
     echo no subscribe url file...
     exit
+else
+    echo $url > subscribe
 fi
 echo updating $url
 curl --noproxy "*" -L -o $BAK $url
