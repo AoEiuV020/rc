@@ -23,7 +23,7 @@ echo 输入当前用户 %user% 的密码以便自动设置系统代理，
 set /p password=
 set nssm=%pwd%..\nssm\nssm.exe
 set start=%pwd%clash-service.bat
-set log=%pwd%log
+set log=%temp%\clash-log
 %nssm% install clash %start%
 %nssm% set clash AppStdin nul
 %nssm% set clash AppStdout %log%
