@@ -18,6 +18,9 @@ goto :exit
 ) else (
 echo %exe% > %pwd%path
 )
+for /f "eol=/ delims=" %%i in ('whoami') do set user=%%i
+echo 输入当前用户 %user% 的密码以便自动设置系统代理，
+set /p password=
 set nssm=%pwd%..\nssm\nssm.exe
 set start=%pwd%clash-service.bat
 set log=%pwd%log
@@ -28,6 +31,7 @@ set log=%pwd%log
 %nssm% set clash AppStdoutCreationDisposition 2
 %nssm% set clash AppStderrCreationDisposition 2
 %nssm% set clash AppExit Default Exit
+%nssm% set clash ObjectName %user% "%password%"
 
 :end
 pause
