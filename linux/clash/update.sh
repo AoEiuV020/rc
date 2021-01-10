@@ -6,7 +6,7 @@ then
     echo permission denied: $profile
     exit
 fi
-TIME=`date '%Y%m%dT%H%M%S'`
+TIME=`date +'%Y%m%dT%H%M%S'`
 BAK="config.yaml.bak${TIME}"
 DEFAULT=config.yaml
 export user=${user:=aoeiuv}
