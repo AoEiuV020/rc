@@ -1,0 +1,12 @@
+[Unit]
+Description=syncthing Client Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=aoeiuv
+ExecStart=/usr/bin/syncthing
+
+
+[Install]
+WantedBy=multi-user.target

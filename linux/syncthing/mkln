@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+system="/lib/systemd/system"
+sudo cp -f syncthing.service $system/
+sudo systemctl daemon-reload
