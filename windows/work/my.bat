@@ -41,6 +41,12 @@ set path=%JAVA_HOME%bin;%path%
 call %0 gradle
 goto end
 
+:jadx
+echo 		Working with jadx,
+set lib=%JADX_HOME%\lib;%lib%
+set path=%JADX_HOME%\bin;%path%
+goto end
+
 :mingw
 echo 		Working with MinGW,
 set lib=%MinGW_HOME%\lib;%lib%
@@ -51,6 +57,14 @@ goto end
 :jni
 call %0 java
 call %0 mingw 64
+goto end
+
+:flutter
+echo 		Working with flutter,
+call %0 android
+set path=%FLUTTER_HOME%\bin;%path%
+set PUB_HOSTED_URL=https://pub.flutter-io.cn
+set FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
 goto end
 
 :android
@@ -169,6 +183,13 @@ echo 		gradle,
 set lib=%GRADLE_HOME%\lib;%lib%
 set path=%GRADLE_HOME%\bin;%path%
 goto end
+
+:ldd
+echo 		ldd,
+call %0 shell
+set path=%LDD_HOME%;%path%
+goto end
+
 
 :exit
 exit
