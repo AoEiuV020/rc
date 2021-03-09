@@ -134,7 +134,7 @@ goto end
 
 :main
 call %0 putty
-putty -load main
+start putty -load main
 goto end
 
 :linux
