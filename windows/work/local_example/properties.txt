@@ -15,3 +15,4 @@ VSTOOLS_HOME="C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Comm
 GRADLE_HOME=D:\aoeiuv020\development\gradle
 GRADLE_USER_HOME=D:\aoeiuv020\development\.gradle
 SHELL_HOME=D:\aoeiuv020\development\PentestBox\base\PortableGit
+FFMPEG_HOME=D:\aoeiuv020\program\video\ffmpeg

@@ -170,6 +170,11 @@ set lib=%GRADLE_HOME%\lib;%lib%
 set path=%GRADLE_HOME%\bin;%path%
 goto end
 
+:ffmpeg
+echo 		ffmpeg,
+set path=%FFMPEG_HOME%\bin;%path%
+goto end
+
 :exit
 exit
 :end
