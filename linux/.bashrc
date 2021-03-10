@@ -27,20 +27,22 @@ if ! shopt -oq posix; then
   fi
 fi
 proxy() {
-    http_proxy_host='127.0.0.1'
-    socks_proxy_host='127.0.0.1'
-    http_proxy_port='1082'
-    socks_proxy_port='1081'
+    echo setup system proxy...
+    export http_proxy_host='127.0.0.1'
+    export socks_proxy_host=$http_proxy_host
+    export http_proxy_port='1082'
+    export socks_proxy_port='1081'
     export ALL_PROXY="socks://$socks_proxy_host:$socks_proxy_port/"
     export FTP_PROXY="http://$http_proxy_host:$http_proxy_port/"
     export HTTPS_PROXY="http://$http_proxy_host:$http_proxy_port/"
     export HTTP_PROXY="http://$http_proxy_host:$http_proxy_port/"
-    export NO_PROXY="localhost,127.0.0.0/8,::1"
-    export all_proxy="socks://$socks_proxy_host:$socks_proxy_port/"
-    export ftp_proxy="http://$http_proxy_host:$http_proxy_port/"
-    export http_proxy="http://$http_proxy_host:$http_proxy_port/"
-    export https_proxy="http://$http_proxy_host:$http_proxy_port/"
-    export no_proxy="localhost,127.0.0.0/8,::1"
+    # 写死127.0.0.1因为flutter的websocket需要，
+    export NO_PROXY="localhost,127.0.0.1,127.0.0.0/8,::1"
+    export all_proxy=$ALL_PROXY
+    export ftp_proxy=$FTP_PROXY
+    export http_proxy=$HTTP_PROXY
+    export https_proxy=$HTTPS_PROXY
+    export no_proxy=$NO_PROXY
     which dconf &>/dev/null && (
     dconf write /system/proxy/http/host "'$http_proxy_host'"
     dconf write /system/proxy/http/port "$http_proxy_port"
@@ -50,6 +52,7 @@ proxy() {
     dconf write /system/proxy/ftp/port "$http_proxy_port"
     dconf write /system/proxy/socks/host "'$socks_proxy_host'"
     dconf write /system/proxy/socks/port "$socks_proxy_port"
+    dconf write /system/proxy/ignore-hosts "['localhost', '127.0.0.1', '127.0.0.0/8', '::1']"
     dconf write /system/proxy/mode "'manual'"
     )
 }
