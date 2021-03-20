@@ -1,5 +1,6 @@
 #!/bin/bash
 profile="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+profile=$(echo $profile|sed 's/^\/\([a-zA-z]\)\//\1:\//')
 SECRET_FILE=$profile/secret
 if test -r $SECRET_FILE
 then

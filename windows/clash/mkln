@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+user_profile="$HOME/.config/clash"
+mkdir -p $user_profile
+ln -sf $pwd/*.sh $user_profile
