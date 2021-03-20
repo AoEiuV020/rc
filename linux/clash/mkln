@@ -4,12 +4,15 @@ pwd=$(dirname $0)
 cd $pwd
 pwd=$PWD
 profile="/etc/clash"
+user_profile="$HOME/.config/clash"
 sudo mkdir -p $profile
 system="/lib/systemd/system"
 user="/usr/lib/systemd/user"
 autostart="$HOME/.config/autostart"
 mkdir -p $autostart
-sudo cp *.sh $profile
+mkdir -p $user_profile
+sudo ln -sf $pwd/*.sh $profile
+ln -sf $pwd/*.sh $user_profile
 sudo cp -f clash.service $system/
 sudo cp -f clash-user.service $user/
 cp -f *.desktop $autostart

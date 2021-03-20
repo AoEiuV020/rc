@@ -9,6 +9,15 @@ fi
 TIME=`date +'%Y%m%dT%H%M%S'`
 BAK="config.yaml.bak${TIME}"
 DEFAULT=config.yaml
+SECRET_FILE=$profile/secret
+if test -r $SECRET_FILE
+then
+    SECRET=$(cat $SECRET_FILE)
+else
+    SECRET=$(dd if=/dev/urandom bs=1 count=12 2>/dev/null|base64)
+    echo generate random secret at $SECRET_FILE
+    echo $SECRET > $SECRET_FILE
+fi
 export user=${user:=aoeiuv}
 export http_proxy_host=${http_proxy_host:=127.0.0.1}
 export socks_proxy_host=${socks_proxy_host:=127.0.0.1}
@@ -54,7 +63,7 @@ port: ${http_proxy_port}
 socks-port: 11181
 allow-lan: false
 external-controller: ':9090'
-secret: 'aoeiuv'
+secret: '$SECRET'
 .
 wq
 EOF
@@ -67,3 +76,4 @@ else
     echo no update...
     rm $BAK
 fi
+test -x $profile/refresh.sh && $profile/refresh.sh
