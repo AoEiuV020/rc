@@ -54,7 +54,7 @@ proxy() {
     dconf write /system/proxy/socks/port "$socks_proxy_port"
     dconf write /system/proxy/ignore-hosts "['localhost', '127.0.0.1', '127.0.0.0/8', '::1']"
     dconf write /system/proxy/mode "'manual'"
-    )
+    ) || true
 }
 noproxy() {
     unset ALL_PROXY
@@ -69,5 +69,5 @@ noproxy() {
     unset no_proxy
     which dconf &>/dev/null && (
     dconf write /system/proxy/mode "'none'"
-    )
+    ) || true
 }
