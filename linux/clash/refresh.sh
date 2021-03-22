@@ -8,6 +8,7 @@ else
     SECRET=$(dd if=/dev/urandom bs=1 count=12 2>/dev/null|base64)
     echo generate random secret at $SECRET_FILE
     echo $SECRET > $SECRET_FILE
+    chmod 600 $SECRET_FILE
 fi
 data=$(cat <<EOF
 {
