@@ -5,16 +5,19 @@ cd $pwd
 pwd=$PWD
 profile="/etc/clash"
 user_profile="$HOME/.config/clash"
-sudo mkdir -p $profile
 system="/lib/systemd/system"
 user="/usr/lib/systemd/user"
 autostart="$HOME/.config/autostart"
-mkdir -p $autostart
-mkdir -p $user_profile
+if [ $(id -u) -ne 0 ]
+then
+    mkdir -p $autostart
+    mkdir -p $user_profile
+    ln -sf $pwd/*.sh $user_profile
+    cp -f *.desktop $autostart
+    systemctl --user daemon-reload || true
+fi
+sudo mkdir -p $profile
 sudo ln -sf $pwd/*.sh $profile
-ln -sf $pwd/*.sh $user_profile
 sudo cp -f clash.service $system/
 sudo cp -f clash-user.service $user/
-cp -f *.desktop $autostart
-systemctl --user daemon-reload || true
 sudo systemctl daemon-reload
