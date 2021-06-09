@@ -165,6 +165,7 @@ echo 		add reg,
 regedit cmd.reg
 regedit gvim.reg
 ::regedit utc.reg
+regedit nopass.reg
 goto end
 
 :aria
