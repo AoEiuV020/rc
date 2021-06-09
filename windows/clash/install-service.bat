@@ -25,7 +25,7 @@ set /p password=
 set nssm=%pwd%..\nssm\nssm.exe
 set start=%pwd%clash-service.bat
 set log=%temp%\clash-log
-# TODO: 加个判断，已经有了就不重复创建，
+:: TODO: 加个判断，已经有了就不重复创建，
 %nssm% install clash %start%
 %nssm% set clash AppStdin nul
 %nssm% set clash AppStdout %log%
