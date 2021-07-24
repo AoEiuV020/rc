@@ -1,0 +1,11 @@
+#!/bin/sh
+dir_devices=/sys/bus/usb/devices
+for i in $(ls $dir_devices)
+do
+    file_product=$dir_devices/$i/product
+    if test -f $file_product
+    then
+        echo -n "$i -> "
+        cat $file_product
+    fi
+done

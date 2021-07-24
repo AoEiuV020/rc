@@ -1,0 +1,14 @@
+[Unit]
+Description=Disables wakeup on mouse event
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=/usr/bin/sh -c "echo 'disabled' > /sys/bus/usb/devices/%i/power/wakeup"
+
+[Install]
+WantedBy=multi-user.target

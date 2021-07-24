@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+system="/lib/systemd/system"
+sudo cp -f $pwd/*.service $system/
