@@ -14,4 +14,5 @@ id=1-7
 sudo systemctl enable disable-wake@$id
 # 立即禁止，
 sudo systemctl start disable-wake@$id
+# 管杀不管埋，没有立即开启唤醒功能，可以参考service代码自行写入enabled,
 ```
