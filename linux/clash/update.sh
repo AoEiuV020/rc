@@ -4,7 +4,7 @@ profile=$(dirname $0)
 if [ ! -w $profile ]
 then
     echo permission denied: $profile
-    exit
+    exit 1
 fi
 TIME=`date +'%Y%m%dT%H%M%S'`
 BAK="config.yaml.bak${TIME}"
@@ -42,16 +42,16 @@ fi
 if [ "x$url" == "x" ]
 then
     echo no subscribe url file...
-    exit
+    exit 2
 else
     echo $url > subscribe
 fi
 echo updating $url
-curl --noproxy "*" -L -o $BAK $url
-if [ "$?" != 0 ]
+code=$(curl -s -w '%{http_code}' --noproxy "*" -L -o $BAK "$url")
+if [[ "$code" != 200 ]]
 then
-    echo download failed...
-    exit
+    echo download failed: $code
+    exit  3
 fi
 sed -i '/^\S*port:/d' $BAK
 sed -i '/^allow-lan:/d' $BAK

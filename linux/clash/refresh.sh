@@ -18,4 +18,12 @@ data=$(cat <<EOF
 EOF
 )
 echo refresh $data
-curl -X PUT --data-raw "$data" 'http://127.0.0.1:9090/configs' -H "Authorization: Bearer $SECRET"
+temp_file=$(tempfile)
+code=$(curl -s -w '%{http_code}' --noproxy "*" -L -o "$temp_file" -X PUT --data-raw "$data" 'http://127.0.0.1:9090/configs' -H "Authorization: Bearer $SECRET")
+result=$(cat $temp_file)
+rm $temp_file
+if [[ "$code" != 200 && "$code" != 204 ]]
+then
+    echo refresh failed: $code
+    exit  4
+fi
