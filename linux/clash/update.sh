@@ -63,7 +63,7 @@ mixed-port: ${socks_proxy_port}
 port: ${http_proxy_port}
 socks-port: 11181
 allow-lan: false
-external-controller: ':9090'
+external-controller: '127.0.0.1:9090'
 secret: '$SECRET'
 .
 wq
