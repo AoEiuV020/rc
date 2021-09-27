@@ -3,7 +3,7 @@ echo update clash subscribe...
 profile=$(dirname $0)
 if [ ! -w $profile ]
 then
-    echo permission denied: $profile
+    echo permission denied: $profile >&2
     exit 1
 fi
 TIME=`date +'%Y%m%dT%H%M%S'`
@@ -41,7 +41,7 @@ then
 fi
 if [ "x$url" == "x" ]
 then
-    echo no subscribe url file...
+    echo no subscribe url file... >&2
     exit 2
 else
     echo $url > subscribe
@@ -50,7 +50,7 @@ echo updating $url
 code=$(curl -s -w '%{http_code}' --noproxy "*" -L -o $BAK "$url")
 if [[ "$code" != 200 ]]
 then
-    echo download failed: $code
+    echo download failed: $code >&2
     exit  3
 fi
 sed -i '/^\S*port:/d' $BAK

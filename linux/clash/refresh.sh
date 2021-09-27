@@ -24,6 +24,6 @@ result=$(cat $temp_file)
 rm $temp_file
 if [[ "$code" != 200 && "$code" != 204 ]]
 then
-    echo refresh failed: $code
+    echo refresh failed: $code >&2
     exit  4
 fi
