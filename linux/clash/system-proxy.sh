@@ -4,7 +4,7 @@ export http_proxy_host='127.0.0.1'
 export socks_proxy_host=$http_proxy_host
 export http_proxy_port='1082'
 export socks_proxy_port='1081'
-export ALL_PROXY="socks://$socks_proxy_host:$socks_proxy_port/"
+export ALL_PROXY="socks5://$socks_proxy_host:$socks_proxy_port/"
 # ftp代理会导致wget无法下载ftp文件，
 unset FTP_PROXY
 export HTTPS_PROXY="http://$http_proxy_host:$http_proxy_port/"
