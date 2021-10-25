@@ -1,6 +1,6 @@
 #!/bin/sh
 echo setup proxy...
-export http_proxy_host='127.0.0.1'
+export http_proxy_host='proxyhost'
 export socks_proxy_host=$http_proxy_host
 export http_proxy_port='1082'
 export socks_proxy_port='1081'
