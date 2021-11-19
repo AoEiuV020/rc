@@ -17,20 +17,45 @@
   ],
   "outbounds": [
     {
+      "tag": "proxy",
       "protocol": "vmess",
       "settings": {
         "vnext": [
           {
-            "address": "out.aoeiuv020.cc",
+            "address": "gcp.aoeiuv020.com",
             "port": 11280,
             "users": [
               {
-                "id": "f159dd4a-fd3f-11e9-9bda-4f2f1f80052e",
-                "alterId": 64
+                "id": "f7bff21c-494d-11ec-9978-525400f29c9b",
+                "alterId": 0,
+                "email": "t@t.tt",
+                "security": "auto"
               }
             ]
           }
-        ]
+        ],
+        "servers": null,
+        "response": null
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": null,
+        "tlsSettings": null,
+        "tcpSettings": null,
+        "kcpSettings": null,
+        "wsSettings": {
+          "connectionReuse": true,
+          "path": "/v2ray",
+          "headers": {
+            "Host": "v2ray.example.com"
+          }
+        },
+        "httpSettings": null,
+        "quicSettings": null
+      },
+      "mux": {
+        "enabled": true,
+        "concurrency": 8
       }
     }
   ]
