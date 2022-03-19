@@ -8,11 +8,6 @@ for i in *.json; do
     rm -f $profile/$i
     cp -f $i $profile/$i
     sed -si "s/\"id\".*/\"id\": \"${1:-$(uuid)}\",/" $profile/$i
-    sed -si "s/\"Host\".*/\"Host\": \"${HOSTNAME}\"/" $profile/$i
 done
 system="/lib/systemd/system"
 cp -f $pwd/*.service $system/
-if [ $UID == 0 ]
-then
-    systemctl daemon-reload
-fi
