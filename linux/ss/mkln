@@ -1,9 +1,13 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 pwd=$(dirname $0)
 cd $pwd
 pwd=$PWD
-profile="/etc/shadowsocks"
+profile="/etc/shadowsocks-libev"
 ln -sf $pwd/*.json $profile/
 system="/lib/systemd/system"
 cp -f $pwd/*.service $system/
+if [ $UID == 0 ]
+then
+    systemctl daemon-reload
+fi

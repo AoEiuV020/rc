@@ -5,6 +5,6 @@
 	"local_port":11180, 
 	"password":"aoeiuv",
 	"timeout":300, 
-	"method":"aes-256-cfb", 
+    "method":"chacha20-ietf-poly1305",
 	"fast_open": false 
 } 

@@ -1,10 +1,10 @@
 { 
-	"server":"ss.aoeiuv020.cc", 
+	"server":"ss.aoeiuv020.com", 
 	"server_port":8388, 
 	"local_address":"0.0.0.0", 
 	"local_port":11181, 
 	"password":"aoeiuv",
 	"timeout":300, 
-	"method":"aes-256-cfb", 
+    "method":"chacha20-ietf-poly1305",
 	"fast_open": false 
 } 
