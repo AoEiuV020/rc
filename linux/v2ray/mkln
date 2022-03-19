@@ -11,3 +11,7 @@ for i in *.json; do
 done
 system="/lib/systemd/system"
 cp -f $pwd/*.service $system/
+if [ $UID == 0 ]
+then
+    systemctl daemon-reload
+fi
