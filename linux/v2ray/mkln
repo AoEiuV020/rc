@@ -4,10 +4,11 @@ pwd=$(dirname $0)
 cd $pwd
 pwd=$PWD
 profile="/etc/v2ray"
+uuid=${1:-$(uuid)}
 for i in *.json; do
     rm -f $profile/$i
     cp -f $i $profile/$i
-    sed -si "s/\"id\".*/\"id\": \"${1:-$(uuid)}\",/" $profile/$i
+    sed -si "s/\"id\".*/\"id\": \"${uuid}\",/" $profile/$i
 done
 system="/lib/systemd/system"
 cp -f $pwd/*.service $system/
