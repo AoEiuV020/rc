@@ -4,7 +4,12 @@ pwd=$(dirname $0)
 cd $pwd
 pwd=$PWD
 profile="/etc/shadowsocks-libev"
-ln -sf $pwd/*.json $profile/
+uuid=${1:-$(uuid)}
+for i in *.json; do
+    rm -f $profile/$i
+    cp -f $i $profile/$i
+    sed -si "s/\"password\".*/\"password\": \"${uuid}\",/" $profile/$i
+done
 system="/lib/systemd/system"
 cp -f $pwd/*.service $system/
 if [ $UID == 0 ]
