@@ -14,7 +14,7 @@ exit /b 2
 )
 set sysproxy=%pwd%../sysproxy/sysproxy.exe
 echo 设置ie代理，
-%sysproxy% global 127.0.0.1:1081 "<local>"
+%sysproxy% set 3 127.0.0.1:1081 - -
 echo 启动clash, %TIME%
 %exe%
 echo 已结束clash, %TIME%
