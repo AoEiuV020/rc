@@ -376,6 +376,8 @@ endif
 "default默认的就挺好，只是linux桌面版的终端vim的注释有点看不清，所以换一个，
 if (!g:iswindows&&!g:isgui)
 	colorscheme slate
+else
+    colorscheme default
 endif
 "命令行自动补全时显示选项，
 set showcmd
