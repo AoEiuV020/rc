@@ -1,0 +1,5 @@
+/home/aoeiuv/.ssh
+/var/www
+/etc/nginx/sites-available
+/etc/nginx/sites-enabled
+/etc/letsencrypt.d
