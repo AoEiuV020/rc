@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+profile="/etc/sub"
+mkdir -p $profile
+#ln -sf $pwd/*.json $profile/
+system="/lib/systemd/system"
+cp -f $pwd/*.service $system/

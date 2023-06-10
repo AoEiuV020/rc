@@ -1,0 +1,12 @@
+[Unit]
+Description=subconverter Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/etc/sub/subconverter
+
+
+[Install]
+WantedBy=multi-user.target
