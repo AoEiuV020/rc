@@ -1,11 +1,11 @@
 [Unit]
-Description=v2ray Client Service
+Description=frp server Service
 After=network.target
 
 [Service]
 Type=simple
 User=nobody
-ExecStart=/usr/bin/v2ray/v2ray -config /etc/v2ray/%i.json
+ExecStart=/etc/frp/frps -c /etc/frp/frps.ini
 
 [Install]
 WantedBy=multi-user.target

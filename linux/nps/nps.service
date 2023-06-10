@@ -1,0 +1,12 @@
+[Unit]
+Description=nps server Service
+After=network.target
+
+[Service]
+Type=simple
+User=aoeiuv
+ExecStart=/etc/nps/nps
+
+[Install]
+WantedBy=multi-user.target
+

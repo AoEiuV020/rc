@@ -1,0 +1,12 @@
+[Unit]
+Description=ngrok server Service
+After=network.target
+
+[Service]
+Type=simple
+User=nobody
+ExecStart=/etc/ngrok/ngrokd -domain="ngrok.aoeiuv020.com" -httpAddr="127.0.0.1:44441" -httpsAddr="127.0.0.1:44442" -tunnelAddr=":44443"
+
+[Install]
+WantedBy=multi-user.target
+
