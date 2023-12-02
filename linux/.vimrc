@@ -14,8 +14,11 @@
 "意思都很明确了，
 let g:iswindows = 0
 let g:islinux = 0
+let g:ismac = 0
 if(has("win32") || has("win64") || has("win95") || has("win16"))
 	let g:iswindows = 1
+elseif(has('macunix'))
+	let g:ismac = 1
 else
 	let g:islinux = 1
 endif
@@ -32,7 +35,7 @@ if (g:iswindows)
 	let $LANG="en"
 	set langmenu=en
 else
-	lang en_US.utf8
+	lang en_US.UTF-8
 endif
 "检查文件类型，有这个才能针对不同文件做预处理，
 filetype indent on 
@@ -374,7 +377,7 @@ endif
 "set cursorcolumn
 "配色方案，其实就是主题，
 "default默认的就挺好，只是linux桌面版的终端vim的注释有点看不清，所以换一个，
-if (!g:iswindows&&!g:isgui)
+if (g:islinux&&!g:isgui)
 	colorscheme slate
 else
     colorscheme default
