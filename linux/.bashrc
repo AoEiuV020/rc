@@ -18,6 +18,9 @@ short_ps()
 }
 default_ps
 set -o vi
+export SYSTEMD_EDITOR=vim
+export VISUAL=vim
+export EDITOR=vim
 shopt -s direxpand
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
