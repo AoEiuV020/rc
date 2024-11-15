@@ -1,0 +1,10 @@
+#!/bin/bash
+set -e
+pwd=$(dirname $0)
+cd $pwd
+pwd=$PWD
+profile="/etc/tun2proxy"
+system="/lib/systemd/system"
+sudo mkdir -p $profile
+sudo cp -f tun2proxy.service $system/
+sudo systemctl daemon-reload

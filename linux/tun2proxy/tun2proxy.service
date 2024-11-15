@@ -1,0 +1,10 @@
+[Unit]
+Description=tun2proxy Service
+
+[Service]
+Type=simple
+User=root
+# 太早启动会报错：Too many open files
+ExecStartPre=/bin/sleep 10
+ExecStart=/etc/tun2proxy/tun2proxy-bin --setup --proxy "socks5://proxyhost:1081"
+
