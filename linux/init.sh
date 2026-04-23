@@ -15,7 +15,7 @@ then
 	mv $bash_profile $bash_profile.old
 fi
 ln -sf ${PWD}/.bash_profile $bash_profile
-git config --global user.email "aoeiuv020@gmail.com"
-git config --global user.name "AoEiuV020"
+git config --global user.email "lel020@outlook.com"
+git config --global user.name "lel020"
 git config --global push.default simple
 git config --global core.editor vim

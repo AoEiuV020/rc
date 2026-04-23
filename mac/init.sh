@@ -9,7 +9,7 @@ then
 	mv $zshrc $zshrc.old
 fi
 ln -sf ${PWD}/.zshrc $zshrc
-git config --global user.email "aoeiuv020@gmail.com"
-git config --global user.name "AoEiuV020"
+git config --global user.email "lel020@outlook.com"
+git config --global user.name "lel020"
 git config --global push.default simple
 git config --global core.editor vim
